@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
       <NavLink className="navbar-brand" to="/">
-        Shoes Shop
+        SNKRS
       </NavLink>
       <button
         className="navbar-toggler d-lg-none"
