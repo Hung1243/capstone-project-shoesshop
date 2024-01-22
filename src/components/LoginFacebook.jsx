@@ -17,7 +17,7 @@ export default function LoginFacebook() {
   };
 
   return (
-    <div>
+    <div className="container">
       <FacebookLogin
         appId="1122185432288108"
         autoLoad={true}

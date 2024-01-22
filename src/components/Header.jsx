@@ -22,8 +22,15 @@ const Header = () => {
     },
   });
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-      <NavLink className="navbar-brand" to="/">
+    <nav
+      className="navbar navbar-expand-sm"
+      style={{ background: "#ececec", boxShadow: "0px 20px 20px #ececec" }}
+    >
+      <NavLink
+        className="navbar-brand"
+        to="/"
+        style={{ fontWeight: "700", fontStyle: "italic" }}
+      >
         SNKRS
       </NavLink>
       <button
