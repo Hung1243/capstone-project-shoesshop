@@ -1,91 +1,61 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { NavLink, useSearchParams } from "react-router-dom";
-import { useFormik } from "formik";
-import { history } from "../index";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  // const [searchParam, setSearchParam] = useSearchParams();
-  const { userLogin } = useSelector((state) => state.userReducer);
-  console.log(userLogin);
+  const { userLogin, cart } = useSelector((state) => state.userReducer);
+  const cartItemCount = cart ? cart.length : 0;
 
-  const frm = useFormik({
-    initialValues: {
-      keyword: "",
-    },
-    onSubmit: ({ keyword }) => {
-      history.push(`/search?keyword=${keyword}`);
-      // //đưa keyword lên url
-      // setSearchParam({
-      //   keyword,
-      // });
-    },
-  });
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div className="navbar navbar-expand-lg navbar-dark bg-dark">
       <NavLink className="navbar-brand" to="/">
         Shoes Shop
       </NavLink>
       <button
-        className="navbar-toggler d-lg-none"
+        className="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
-      />
-      <div className="collapse navbar-collapse" id="collapsibleNavId">
-        <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-            <NavLink className="nav-link active" to="/" aria-current="page">
-              Home <span className="visually-hidden">(current)</span>
-            </NavLink>
+            {userLogin.email ? (
+              <NavLink className="nav-link" to="/profile">
+                Hi, {userLogin.email}
+              </NavLink>
+            ) : (
+              <NavLink className="nav-link" to="/login">
+                Login
+              </NavLink>
+            )}
           </li>
           <li className="nav-item">
-            {(() => {
-              if (userLogin.email != "") {
-                return (
-                  <NavLink className="nav-link" to="/profile">
-                    Hello {userLogin.email}
-                  </NavLink>
-                );
-              }
-              return (
-                <NavLink className="nav-link" to="login">
-                  Login
-                </NavLink>
-              );
-            })()}
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="register">
+            <NavLink className="nav-link" to="/register">
               Register
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="search">
+            <NavLink className="nav-link" to="/search">
               Search
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/cart">
+              <i className="fa fa-shopping-cart"></i>{" "}
+              {cartItemCount > 0 && (
+                <span className="badge">{cartItemCount}</span>
+              )}
+            </NavLink>
+          </li>
         </ul>
-        <form onSubmit={frm.handleSubmit} className="d-flex my-2 my-lg-0">
-          <input
-            name="keyword"
-            onChange={frm.handleChange}
-            className="form-control me-sm-2"
-            type="text"
-            placeholder="Search"
-          />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form>
       </div>
-    </nav>
+    </div>
   );
 };
 
