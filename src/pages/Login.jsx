@@ -28,7 +28,7 @@ const Login = () => {
   }, []);
 
   return (
-    <div>
+    <div className="" style={{ marginTop: "90px" }}>
       <Form
         onFinish={frmLogin.handleSubmit}
         className="container"
@@ -39,10 +39,14 @@ const Login = () => {
           span: 16,
         }}
         style={{
-          maxWidth: 600,
+          maxWidth: 700,
+          background: "#ececec",
+          padding: "10px 50px 50px 50px",
         }}
       >
-        <h3>Login</h3>
+        <h3 style={{ fontWeight: "bold", fontFamily: "Libre Bodoni, serif" }}>
+          Login
+        </h3>
         <Form.Item
           label="Email"
           name="email"
@@ -76,13 +80,15 @@ const Login = () => {
           <Button
             type="primary"
             htmlType="submit"
-            className="btn btn-dark mt-2"
+            className="btn btn-dark mx-2"
+            style={{ fontSize: "12px" }}
           >
-            Login
+            SIGN IN
           </Button>
         </Form.Item>
+
+        <LoginFacebook />
       </Form>
-      <LoginFacebook />
     </div>
   );
 };

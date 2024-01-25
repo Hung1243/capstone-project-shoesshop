@@ -23,8 +23,12 @@ const Header = () => {
   });
   return (
     <nav
-      className="navbar navbar-expand-sm"
-      style={{ background: "#ececec", boxShadow: "0px 20px 20px #ececec" }}
+      className="navbar navbar-expand-sm navbar-dark"
+      style={{
+        background: "#202020",
+        boxShadow: "#202020 -1px 5px 20px 20px",
+        color: "white",
+      }}
     >
       <NavLink
         className="navbar-brand"

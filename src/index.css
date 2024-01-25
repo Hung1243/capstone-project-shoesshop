@@ -1,15 +1,22 @@
-body {
-  margin: 0;
+body, html{
   font-family: 'Libre Bodoni', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-p{
-  color: black;
+/* code {
+  font-family: 'Libre Bodoni', serif;
+
 } */
+
+button.kep-login-facebook.metro{
+  border-radius: 11px;
+  background: linear-gradient(90deg, rgb(75 72 130) 0%, rgba(9,9,121,1) 24%, rgb(60 175 199) 100%, rgba(9,9,121,1) 100%);
+  border: none;
+}
