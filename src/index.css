@@ -21,4 +21,10 @@
 
 .custom-next {
   right: 10px;
+  body {
+    margin: 0;
+    font-family: "Libre Bodoni", serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }

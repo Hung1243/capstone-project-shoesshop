@@ -1,11 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { number } from "yup";
+import { addToCart } from "../redux/Reducers/cartReducer";
 
 const Detail = () => {
   const [productDetail, setProductDetail] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const dispatch = useDispatch();
   console.log("productDetail", productDetail);
   //lấy giá trị từ thanh url thông qua param trên thẻ route
   const params = useParams();
@@ -29,13 +33,25 @@ const Detail = () => {
   };
 
   const handleAddToCart = () => {
-    // Implement your logic to add the product to the cart with the selected quantity
-    // This might involve dispatching an action to your Redux store
-    console.log(
-      `Added ${quantity} item(s) of ${productDetail.name} to the cart`
-    );
-  };
+    if (!selectedSize) {
+      alert("Please select a size before adding to cart");
+      return;
+    }
 
+    const productToAdd = {
+      id: productDetail.id,
+      name: productDetail.name,
+      image: productDetail.image,
+      price: productDetail.price,
+      size: selectedSize,
+      quantity: quantity,
+      total: productDetail.price * quantity,
+    };
+
+    // Thêm sản phẩm vào giỏ hàng và cập nhật số lượng hiển thị
+    dispatch(addToCart(productToAdd));
+    setQuantity(1); // Reset số lượng về 1
+  };
   useEffect(() => {
     //gọi api
     getProductById();
@@ -52,11 +68,17 @@ const Detail = () => {
           <h3>{productDetail.name}</h3>
           <p>{productDetail.description}</p>
           <div className="mt-2">
-            {productDetail.size?.map((number) => {
-              return (
-                <button className="btn btn-outline-dark mx-2">{number}</button>
-              );
-            })}
+            {productDetail.size?.map((size) => (
+              <button
+                key={size}
+                className={`btn btn-outline-dark mx-2 ${
+                  selectedSize === size ? "active" : ""
+                }`}
+                onClick={() => setSelectedSize(size)}
+              >
+                {size}
+              </button>
+            ))}
           </div>
           <div className="quantity-selector mt-2 d-flex">
             <button
@@ -79,6 +101,7 @@ const Detail = () => {
               +
             </button>
           </div>
+          <h3>Price: {productDetail.price}$</h3>
           <button
             className="btn btn-outline-dark ml-2"
             onClick={handleAddToCart}

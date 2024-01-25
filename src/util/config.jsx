@@ -49,7 +49,6 @@ http.interceptors.response.use(
     // console.log({err})
     //Xử lý khi lỗi
     if (err.response?.status === 404) {
-      
     } else if (err.response?.status === 400) {
     } else if (err.response?.status === 401) {
       alert("Đăng nhập để vào trang này!");
