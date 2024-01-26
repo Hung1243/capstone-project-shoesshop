@@ -1,10 +1,41 @@
-body, html{
-  font-family: 'Libre Bodoni', serif;
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #fff;
+  background-color: #000;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.custom-arrow:hover {
+  background-color: #333;
+}
+
+.custom-prev {
+  left: 10px;
+}
+
+.custom-next {
+  right: 10px;
+  body {
+    margin: 0;
+    font-family: "Libre Bodoni", serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+body,
+html {
+  font-family: "Libre Bodoni", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-*{
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -15,8 +46,14 @@ body, html{
 
 } */
 
-button.kep-login-facebook.metro{
+button.kep-login-facebook.metro {
   border-radius: 11px;
-  background: linear-gradient(90deg, rgb(75 72 130) 0%, rgba(9,9,121,1) 24%, rgb(60 175 199) 100%, rgba(9,9,121,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(75 72 130) 0%,
+    rgba(9, 9, 121, 1) 24%,
+    rgb(60 175 199) 100%,
+    rgba(9, 9, 121, 1) 100%
+  );
   border: none;
 }
