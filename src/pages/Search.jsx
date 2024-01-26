@@ -51,11 +51,9 @@ const Search = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <form className="frm-search mt-2" onSubmit={formSearch.handleSubmit}>
         <div className="input-group mb-3">
-          <button className="input-group-button btn btn-success">Search</button>
-
           <div className="form-floating">
             <input
               type="text"
@@ -68,6 +66,7 @@ const Search = () => {
             />
             <label htmlFor="keyword">search</label>
           </div>
+          <button className="input-group-button btn btn-dark">Search</button>
         </div>
       </form>
       <h3 className="my-2">Search result</h3>
@@ -80,7 +79,12 @@ const Search = () => {
           value={sortOrder}
           onChange={(e) => handleSort(e.target.value)}
           className=""
-          style={{ fontSize: "14px", cursor: "pointer" }}
+          style={{
+            fontSize: "14px",
+            cursor: "pointer",
+            padding: "5px 5px",
+            borderRadius: "10px",
+          }}
         >
           <option value="asc">Price, Low to High</option>
           <option value="desc">Price, High to Low</option>
