@@ -19,7 +19,7 @@ export default function LoginFacebook() {
   return (
     <div className="container">
       <FacebookLogin
-        appId="1122185432288108"
+        appId="924799885385539"
         autoLoad={true}
         fields="name,email,picture"
         callback={responseFacebook}

@@ -12,7 +12,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow">
       <div className="container-fluid">
         <NavLink className="navbar-brand fs-3 text-white" to="/">
-          Shoes Shop
+          SNKRS
         </NavLink>
         <button
           className="navbar-toggler"
