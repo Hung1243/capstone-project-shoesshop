@@ -16,7 +16,7 @@ const HomeTemplate = () => {
       <DeviceTemplate
         Component={
           <footer
-            className="p-5 text-center"
+            className="p-3 text-center"
             style={{
               background: "#202020",
             }}
