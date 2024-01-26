@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { number } from "yup";
 import { addToCart } from "../redux/Reducers/cartReducer";
 
@@ -10,8 +10,7 @@ const Detail = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState(null);
   const dispatch = useDispatch();
-  console.log("productDetail", productDetail);
-  //lấy giá trị từ thanh url thông qua param trên thẻ route
+  const navigate = useNavigate();
   const params = useParams();
 
   const getProductById = async () => {
@@ -32,7 +31,17 @@ const Detail = () => {
     setQuantity(Math.max(1, value));
   };
 
+  const isLoggedIn = useSelector((state) => state.userReducer.userLogin.email);
+
   const handleAddToCart = () => {
+    if (!isLoggedIn) {
+      // Nếu chưa đăng nhập, hiển thị cảnh báo
+      alert("Please log in to add items to your cart.");
+      // Chuyển hướng đến trang đăng nhập
+      navigate("/login");
+      return;
+    }
+
     if (!selectedSize) {
       alert("Please select a size before adding to cart");
       return;
@@ -56,6 +65,7 @@ const Detail = () => {
     //gọi api
     getProductById();
   }, [params.id]);
+
   return (
     <div className="container">
       <h3>Detail</h3>
