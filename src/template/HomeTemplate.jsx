@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import DeviceTemplate from "./DeviceTemplate";
 import BottomTab from "../components/BottomTab";
+import Footer from "../components/Footer";
 
 const HomeTemplate = () => {
   return (
@@ -20,7 +21,7 @@ const HomeTemplate = () => {
               background: "#202020",
             }}
           >
-            <h3>Footer</h3>
+            <Footer />
           </footer>
         }
         MobileComponent={<BottomTab />}
