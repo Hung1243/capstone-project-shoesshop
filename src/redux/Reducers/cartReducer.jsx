@@ -1,3 +1,4 @@
+// cartReducer.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -19,16 +20,27 @@ const cartReducer = createSlice({
       const existingIndex = findCartItemIndex(state.items, newItem);
 
       if (existingIndex !== -1) {
-        // Nếu sản phẩm đã tồn tại, chỉ tăng số lượng
         state.items[existingIndex].quantity += newItem.quantity;
       } else {
-        // Ngược lại, thêm một hàng mới vào giỏ hàng
         state.items.push(newItem);
       }
+    },
+    updateCartItem: (state, action) => {
+      const updatedItem = action.payload;
+      const existingIndex = findCartItemIndex(state.items, updatedItem);
+
+      if (existingIndex !== -1) {
+        state.items[existingIndex] = updatedItem;
+      }
+    },
+    removeCartItem: (state, action) => {
+      const removedItemId = action.payload;
+      state.items = state.items.filter((item) => item.id !== removedItemId);
     },
   },
 });
 
-export const { addToCart } = cartReducer.actions;
+export const { addToCart, updateCartItem, removeCartItem } =
+  cartReducer.actions;
 
 export default cartReducer.reducer;
