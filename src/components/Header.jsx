@@ -1,15 +1,45 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { Badge } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Badge, Dropdown, Menu } from "antd";
+import {
+  ShoppingCartOutlined,
+  UserOutlined,
+  LogoutOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
+import { logoutAction } from "../redux/Reducers/UserReducer";
 
 const Header = () => {
   const { userLogin, cart } = useSelector((state) => state.userReducer);
   const cartItemCount = useSelector((state) => state.cart.items.length);
+  const dispatch = useDispatch();
+  const [visible, setVisible] = useState(false);
+  const handleLogout = () => {
+    dispatch(logoutAction());
+  };
 
+  const menu = (
+    <Menu>
+      <Menu.Item key="profile">
+        <NavLink to="/profile">My Profile</NavLink>
+      </Menu.Item>
+      <Menu.Item key="logout" onClick={handleLogout}>
+        Logout
+      </Menu.Item>
+    </Menu>
+  );
+
+  const handleVisibleChange = (flag) => {
+    setVisible(flag);
+  };
+
+  useEffect(() => {
+    // Đặt giá trị visible về false khi userLogin thay đổi
+    setVisible(false);
+  }, [userLogin]);
   return (
-    <nav className=" navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow">
       <div className="container-fluid">
         <NavLink className="navbar-brand fs-3 text-white" to="/">
           SNKRS
@@ -29,9 +59,24 @@ const Header = () => {
           <ul className="navbar-nav ms-auto d-flex align-items-center">
             <li className="nav-item">
               {userLogin.email ? (
-                <NavLink className="nav-link" to="/profile">
-                  Hi, {userLogin.email}
-                </NavLink>
+                <Dropdown
+                  overlay={menu}
+                  trigger={["click"]}
+                  visible={visible}
+                  onVisibleChange={handleVisibleChange}
+                >
+                  <NavLink
+                    className="nav-link"
+                    to={userLogin.email ? "#" : "/login"}
+                    onClick={(e) => {
+                      if (!userLogin.email) {
+                        e.preventDefault();
+                      }
+                    }}
+                  >
+                    Hi, {userLogin.email} <DownOutlined />
+                  </NavLink>
+                </Dropdown>
               ) : (
                 <div className="d-flex">
                   <NavLink className="nav-link" to="/login">

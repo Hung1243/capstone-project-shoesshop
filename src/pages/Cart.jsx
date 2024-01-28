@@ -4,6 +4,7 @@ import {
   addToCart,
   updateCartItem,
   removeCartItem,
+  clearCart,
 } from "../redux/Reducers/cartReducer";
 import axios from "axios";
 import { Modal, Button } from "antd";
@@ -14,6 +15,8 @@ const Cart = () => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const user = useSelector((state) => state.userReducer.userLogin);
+  const [orderedQuantities, setOrderedQuantities] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,12 +31,12 @@ const Cart = () => {
     }
   }, [dispatch]);
 
-  useEffect(() => {
-    const storedCartData = JSON.parse(localStorage.getItem("cart") || "[]");
-    if (JSON.stringify(storedCartData) !== JSON.stringify(cartItems)) {
-      localStorage.setItem("cart", JSON.stringify(cartItems));
-    }
-  }, [cartItems]);
+  // useEffect(() => {
+  //   const storedCartData = JSON.parse(localStorage.getItem("cart") || "[]");
+  //   if (JSON.stringify(storedCartData) !== JSON.stringify(cartItems)) {
+  //     localStorage.setItem("cart", JSON.stringify(cartItems));
+  //   }
+  // }, [cartItems]);
 
   const handleEdit = (item) => {
     setIsEditing(item.id);
@@ -77,7 +80,7 @@ const Cart = () => {
 
   const handleOk = () => {
     setIsModalVisible(false);
-    cartItems.forEach((item) => dispatch(removeCartItem(item.id)));
+    dispatch(clearCart()); // Xóa toàn bộ giỏ hàng sau khi đặt hàng
     localStorage.removeItem("cart");
     // Chuyển hướng về trang home sau khi nhấn nút "OK" trên modal
     navigate("/");
@@ -96,25 +99,46 @@ const Cart = () => {
       return;
     }
 
+    if (!user || !user.email) {
+      // Kiểm tra xem người dùng có đăng nhập hay không
+      alert("Please log in to submit your order.");
+      return;
+    }
+
     try {
       const response = await axios.post(
         "https://shop.cyberlearn.vn/api/Users/order",
         {
-          items: cartItems.map((item) => ({
-            id: item.id,
+          orderDetail: cartItems.map((item) => ({
+            productId: item.id,
             quantity: item.quantity,
           })),
-          email: "",
+          email: user.email, // Sử dụng email của người đăng nhập
         }
       );
+
       console.log("Order placement response:", response.data);
+
+      const updatedQuantities = {};
+      cartItems.forEach((item) => {
+        updatedQuantities[item.id] = item.quantity;
+      });
+      setOrderedQuantities(updatedQuantities);
       showModal(); // Hiển thị modal sau khi đặt hàng thành công
 
-      cartItems.forEach((item) => dispatch(removeCartItem(item.id)));
+      dispatch(clearCart()); // Xóa giỏ hàng sau khi đặt hàng
     } catch (error) {
       console.error("Error placing order:", error);
     }
   };
+
+  useEffect(() => {
+    const storedCartData = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (JSON.stringify(storedCartData) !== JSON.stringify(cartItems)) {
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+    }
+  }, [cartItems]);
+
   return (
     <div className="container">
       <h2>Your Cart</h2>

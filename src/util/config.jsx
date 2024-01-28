@@ -27,19 +27,7 @@ http.interceptors.request.use(
   }
 );
 
-/* 
-    status code
-    200: request thành công về server và được trả response(kết quả) về.
-    201: Dữ liệu request thành công và đã được khởi tạo (created)
-    400: Bad request (Đường dẫn không tồn tại)
-    401: Unauthorize (Không có quyền truy cập vào api này - token không hợp lệ)
-    403: Forbiden (Token chưa đủ quyền truy cập vào api này)
-    404: Not found (Không tìm thấy dữ liệu) (Thường truyền sai id của get detail)
-    500: Error in server (Xảy ra tại server)
-    + Kiểm tra lại
-    FE: Kiểm tra dữ liệu có đúng format backend yêu không và giá trị có chuẩn như backend qui định
-    BE: kiểm tra lại tất cả logic code trên dữ liệu front đưa ra 
-*/
+
 //cấu hình cho tất cả response(dữ liệu nhận về từ backend)
 http.interceptors.response.use(
   (res) => {

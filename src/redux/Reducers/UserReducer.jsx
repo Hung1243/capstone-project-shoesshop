@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { TOKEN, USER_LOGIN, http } from "../../util/config";
 import { history } from "../../index";
+import { fetchOrderHistorySuccess } from "./OrderHistoryReducer";
 
 //Xử lý load giá trị ban đầu cho state từ storage(localstorage)
 let userLoginDefault = {
@@ -16,6 +17,15 @@ const initialState = {
   userProfile: {},
   userLogin: userLoginDefault,
 };
+export const logoutAction = () => {
+  return (dispatch) => {
+    localStorage.removeItem(TOKEN);
+    localStorage.removeItem(USER_LOGIN);
+    const action = logoutSuccess();
+    dispatch(action);
+    history.push("/login");
+  };
+};
 
 const UserReducer = createSlice({
   name: "userReducer",
@@ -27,10 +37,15 @@ const UserReducer = createSlice({
     getProfileAction: (state, action) => {
       state.userProfile = action.payload;
     },
+    logoutSuccess: (state) => {
+      state.userProfile = {};
+      state.userLogin = { email: "", accessToken: "" };
+    },
   },
 });
 
-export const { loginAction, getProfileAction } = UserReducer.actions;
+export const { loginAction, getProfileAction, logoutSuccess } =
+  UserReducer.actions;
 
 export default UserReducer.reducer;
 
@@ -65,7 +80,10 @@ export const getProfileApiAction = () => {
     try {
       const res = await http.post("/Users/getProfile");
 
-      //Sau khi có được dữ liệu thì dispatch lên reducer
+      // Thêm dispatch cho fetchOrderHistorySuccess để lưu lịch sử đơn hàng vào Redux store
+      dispatch(fetchOrderHistorySuccess(res.data.content.ordersHistory));
+
+      // Thay đổi để lưu thông tin người dùng vào Redux store
       const action = getProfileAction(res.data.content);
       dispatch(action);
     } catch (err) {}

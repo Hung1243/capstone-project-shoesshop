@@ -51,16 +51,16 @@ const Profile = () => {
 
   return (
     <div className="container">
-      <div className="row mt-5">
-        <div className="col-3">
+      <div className="row mt-5 m-5">
+        <div className="col-4">
           <img
             src={userProfile.avatar}
             alt="..."
-            width={100}
+            width={200}
             style={{ borderRadius: "50%" }}
           />
         </div>
-        <div className="col-9">
+        <div className="col-8">
           <h5>Name: {userProfile.name}</h5>
           <h5>Email: {userProfile.email}</h5>
           <h5>Password: {userProfile.password}</h5>

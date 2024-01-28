@@ -16,7 +16,7 @@ const cartReducer = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const newItem = action.payload;
+      const newItem = { ...action.payload, timestamp: Date.now() };
       const existingIndex = findCartItemIndex(state.items, newItem);
 
       if (existingIndex !== -1) {
@@ -37,10 +37,13 @@ const cartReducer = createSlice({
       const removedItemId = action.payload;
       state.items = state.items.filter((item) => item.id !== removedItemId);
     },
+    clearCart: (state) => {
+      state.items = [];
+    },
   },
 });
 
-export const { addToCart, updateCartItem, removeCartItem } =
+export const { addToCart, updateCartItem, removeCartItem, clearCart } =
   cartReducer.actions;
 
 export default cartReducer.reducer;

@@ -3,7 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { number } from "yup";
-import { addToCart } from "../redux/Reducers/cartReducer";
+
+import {
+  addToCart,
+  updateCartItem,
+  removeCartItem,
+  clearCart,
+} from "../redux/Reducers/cartReducer";
 
 const Detail = () => {
   const [productDetail, setProductDetail] = useState({});
@@ -13,12 +19,17 @@ const Detail = () => {
   const navigate = useNavigate();
   const params = useParams();
 
+  const isLoggedIn = useSelector((state) => state.userReducer.userLogin.email);
+
   const getProductById = async () => {
-    const res = await axios({
-      url: `https://shop.cyberlearn.vn/api/Product/getbyid?id=${params.id}`,
-      method: "GET",
-    });
-    setProductDetail(res.data.content);
+    try {
+      const response = await axios.get(
+        `https://shop.cyberlearn.vn/api/Product/getbyid?id=${params.id}`
+      );
+      setProductDetail(response.data.content);
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+    }
   };
 
   const handleQuantityChange = (amount) => {
@@ -30,8 +41,6 @@ const Detail = () => {
     const value = parseInt(e.target.value, 10) || 0;
     setQuantity(Math.max(1, value));
   };
-
-  const isLoggedIn = useSelector((state) => state.userReducer.userLogin.email);
 
   const handleAddToCart = () => {
     if (!isLoggedIn) {
@@ -61,11 +70,11 @@ const Detail = () => {
     dispatch(addToCart(productToAdd));
     setQuantity(1); // Reset số lượng về 1
   };
+
   useEffect(() => {
-    //gọi api
+    // Gọi api
     getProductById();
   }, [params.id]);
-
   return (
     <div className="container">
       <div className="row mt-5">

@@ -1,51 +1,42 @@
+// Trong file OrderHistory.js
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { fetchOrderHistorySuccess } from "../redux/Reducers/OrderHistoryReducer";
+import { getProfileApiAction } from "../redux/Reducers/UserReducer";
 
 const OrderHistory = () => {
-  const userLogin = useSelector((state) => state.userReducer.userLogin);
-  const [orderHistory, setOrderHistory] = useState([]);
+  const userProfile = useSelector((state) => state.userReducer.userProfile);
   const dispatch = useDispatch();
   const params = useParams();
 
-  const getOrderHistoryById = async () => {
-    try {
-    if (!params.id || !userLogin.accessToken) {
-      console.error("Invalid params or accessToken");
-      // Xử lý trường hợp params.id hoặc accessToken không tồn tại
-      return;
-    }
-      const response = await axios.post(
-        `https://shop.cyberlearn.vn/api/Users/getProfile/${params.id}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${userLogin.accessToken}`,
-          },
-        }
-      );
-      dispatch(fetchOrderHistorySuccess(response.data.content.ordersHistory));
-    } catch (error) {
-      console.error("Error fetching order history:", error);
-    }
-  };
-
   useEffect(() => {
-    if (params && params.id) {
-      getOrderHistoryById();
+    if (
+      !userProfile ||
+      !userProfile.ordersHistory ||
+      userProfile.ordersHistory.length === 0
+    ) {
+      dispatch(getProfileApiAction());
     }
-  }, [params.id, userLogin.accessToken]);
+  }, [dispatch, userProfile]);
+
+  if (
+    !userProfile ||
+    !userProfile.ordersHistory ||
+    userProfile.ordersHistory.length === 0
+  ) {
+    return <div>No order history available.</div>;
+  }
 
   return (
     <div>
-      {orderHistory.map((order) => (
+      <h3>Order History</h3>
+      {userProfile.ordersHistory.map((order) => (
         <div key={order.id}>
           <p>{`+ Orders have been placed on ${new Date(
             order.date
           ).toLocaleDateString()}`}</p>
-          <table>
+          <table className="table table-bordered">
             <thead>
               <tr>
                 <th>ID</th>
@@ -70,9 +61,21 @@ const OrderHistory = () => {
                   <td>{item.name}</td>
                   <td>${item.price}</td>
                   <td>{item.quantity}</td>
-                  <td>${item.total}</td>
+                  <td>${item.price * item.quantity}</td>
                 </tr>
               ))}
+              <tr>
+                <td colSpan="5" className="text-right">
+                  <strong>Total for this order:</strong>
+                </td>
+                <td>
+                  $
+                  {order.orderDetail.reduce(
+                    (acc, item) => acc + item.price * item.quantity,
+                    0
+                  )}
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

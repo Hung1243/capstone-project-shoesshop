@@ -3,9 +3,11 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateOnOkayAction } from "../redux/Reducers/DrawerReducer";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Register = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Sử dụng useNavigate thay vì useHistory
 
   const frmRegis = useFormik({
     initialValues: {
@@ -26,6 +28,10 @@ const Register = () => {
 
         const action = updateOnOkayAction();
         dispatch(action);
+
+        // Hiển thị thông báo và chuyển hướng đến trang đăng nhập
+        alert("Bạn đã đăng ký thành công!");
+        navigate("/login");
       } catch (error) {
         console.error("Registration failed:", error);
       }
