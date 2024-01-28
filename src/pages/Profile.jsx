@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProfileApiAction } from "../redux/Reducers/UserReducer";
 import { Modal, Form, Input, Radio, Button } from "antd";
 import { http } from "../util/config";
+import OrderHistory from "../components/OrderHistory";
 
 const Profile = () => {
   const { userProfile } = useSelector((state) => state.userReducer);
@@ -105,6 +106,7 @@ const Profile = () => {
           </Form.Item>
         </Form>
       </Modal>
+      <OrderHistory />
     </div>
   );
 };
