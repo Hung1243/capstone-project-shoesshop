@@ -68,9 +68,7 @@ const Detail = () => {
 
   return (
     <div className="container">
-      <h3>Detail</h3>
-      {/* <p>param:{params.id}</p> */}
-      <div className="row">
+      <div className="row mt-5">
         <div className="col-5">
           <img src={productDetail.image} alt="...." height={350} />
         </div>
@@ -90,7 +88,7 @@ const Detail = () => {
               </button>
             ))}
           </div>
-          <div className="quantity-selector mt-2 d-flex">
+          <div className="quantity-selector mt-3 d-flex">
             <button
               className="btn btn-outline-dark"
               onClick={() => handleQuantityChange(-1)}
@@ -111,7 +109,7 @@ const Detail = () => {
               +
             </button>
           </div>
-          <h3>Price: {productDetail.price}$</h3>
+          <p className="mt-3">{productDetail.price}$</p>
           <button
             className="btn btn-outline-dark ml-2"
             onClick={handleAddToCart}

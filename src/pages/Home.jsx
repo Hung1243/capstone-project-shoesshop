@@ -79,25 +79,29 @@ const Home = () => {
         </button>
       </div>
 
-      <div className="row">
+      <div className="row product-card">
         {arrProduct.map((prod) => {
           return (
-            <div className="col-4 mt-2" key={prod.id}>
+            <div className="col-4 mt-2 product-container" key={prod.id}>
               <NavLink
                 style={{ textDecoration: "none" }}
                 to={`/detail/${prod.id}`}
                 className="card"
               >
-                <img src={prod.image} alt="123" />
+                <div className="image-container">
+                  <img src={prod.image} alt="123" style={{ width: "100%" }} />
+                  <div className="button-container">
+                    <NavLink
+                      className="btn btn-outline-dark buy-button"
+                      to={`/detail/${prod.id}`}
+                    >
+                      Buy Now
+                    </NavLink>
+                  </div>
+                </div>
                 <div className="card-body">
                   <h3>{prod.name}</h3>
-                  <p>{prod.price}</p>
-                  <NavLink
-                    className="btn btn-outline-dark"
-                    to={`/detail/${prod.id}`}
-                  >
-                    Buy Now
-                  </NavLink>
+                  <p>${prod.price}.00</p>
                 </div>
               </NavLink>
             </div>
