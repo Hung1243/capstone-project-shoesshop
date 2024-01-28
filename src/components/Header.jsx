@@ -9,7 +9,7 @@ const Header = () => {
   const cartItemCount = useSelector((state) => state.cart.items.length);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <nav className=" navbar navbar-expand-lg navbar-dark bg-dark shadow">
       <div className="container-fluid">
         <NavLink className="navbar-brand fs-3 text-white" to="/">
           SNKRS
