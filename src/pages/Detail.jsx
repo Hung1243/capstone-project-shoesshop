@@ -127,7 +127,7 @@ const Detail = () => {
                 <img src={prod.image} alt="..." />
                 <div className="card-body">
                   <h3>{prod.name}</h3>
-                  <p>{prod.price}$</p>
+                  <p>${prod.price}</p>
                   <NavLink
                     className={"btn btn-outline-dark"}
                     to={`/detail/${prod.id}`}
