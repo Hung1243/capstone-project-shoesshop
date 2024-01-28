@@ -131,20 +131,28 @@ const Detail = () => {
       <div className="row">
         {productDetail.relatedProducts?.map((prod) => {
           return (
-            <div className="col-md-4">
-              <div className="card">
-                <img src={prod.image} alt="..." />
+            <div className="col-4 mt-2 product-container" key={prod.id}>
+              <NavLink
+                style={{ textDecoration: "none" }}
+                to={`/detail/${prod.id}`}
+                className="card"
+              >
+                <div className="image-container">
+                  <img src={prod.image} alt="123" style={{ width: "100%" }} />
+                  <div className="button-container">
+                    <NavLink
+                      className="btn btn-outline-dark buy-button"
+                      to={`/detail/${prod.id}`}
+                    >
+                      Buy Now
+                    </NavLink>
+                  </div>
+                </div>
                 <div className="card-body">
                   <h3>{prod.name}</h3>
-                  <p>${prod.price}</p>
-                  <NavLink
-                    className={"btn btn-outline-dark"}
-                    to={`/detail/${prod.id}`}
-                  >
-                    View Detail
-                  </NavLink>
+                  <p>${prod.price}.00</p>
                 </div>
-              </div>
+              </NavLink>
             </div>
           );
         })}
