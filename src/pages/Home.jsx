@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import { Button, Carousel } from "antd";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { Pagination } from "antd";
+import TickerAnimation from "../components/TickerAnimation";
+
+const itemsPerPage = 6;
 
 const Home = () => {
   const [arrProduct, setArrProduct] = useState([]);
@@ -19,6 +21,17 @@ const Home = () => {
     //gọi api trong useEffect didmount
     getAllProductApi();
   }, []);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const onChangePage = (page) => {
+    setCurrentPage(page);
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const displayedProducts = arrProduct.slice(startIndex, endIndex);
 
   return (
     <div className="container">
@@ -78,68 +91,10 @@ const Home = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      <div class="logo-bar ticker-wrap">
-        <div className="ticker">
-          <span className="item-collection-1">
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/mc.png?v=1625524579&width=140"
-              alt="1"
-            />
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/forbes.png?v=1625524579&width=140"
-              alt="2"
-            />
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/vogue.png?v=1625524579&width=140"
-              alt="3"
-            />
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/esquire.png?v=1625524579&width=140"
-              alt="4"
-            />
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/people.png?v=1625524579&width=140"
-              alt="5"
-            />
-          </span>
-          <span className="item-collection-2">
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/mc.png?v=1625524579&width=140"
-              alt="1"
-            />
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/forbes.png?v=1625524579&width=140"
-              alt="2"
-            />
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/vogue.png?v=1625524579&width=140"
-              alt="3"
-            />
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/esquire.png?v=1625524579&width=140"
-              alt="4"
-            />
-            <img
-              className="ticker__item"
-              src="https://pipeline-light.myshopify.com/cdn/shop/files/people.png?v=1625524579&width=140"
-              alt="5"
-            />
-          </span>
-        </div>
-      </div>
-
+      <TickerAnimation />
       <div className="row product-card">
-        <p className=" text-center">FEATURED COLLECTIONS</p>
-        {arrProduct.map((prod) => {
+        <p className="featured-title text-center">FEATURED COLLECTIONS</p>
+        {displayedProducts.map((prod) => {
           return (
             <div className="col-4 mt-2 product-container" key={prod.id}>
               <NavLink
@@ -167,6 +122,13 @@ const Home = () => {
           );
         })}
       </div>
+      <Pagination
+        defaultCurrent={1}
+        total={arrProduct.length}
+        pageSize={itemsPerPage}
+        onChange={onChangePage}
+        style={{ textAlign: "center" }}
+      />
     </div>
   );
 };

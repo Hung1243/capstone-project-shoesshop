@@ -92,6 +92,7 @@ const Detail = () => {
                   selectedSize === size ? "active" : ""
                 }`}
                 onClick={() => setSelectedSize(size)}
+                style={{ borderRadius: "0" }}
               >
                 {size}
               </button>
@@ -101,6 +102,7 @@ const Detail = () => {
             <button
               className="btn btn-outline-dark"
               onClick={() => handleQuantityChange(-1)}
+              style={{ borderRadius: "0" }}
             >
               -
             </button>
@@ -114,21 +116,28 @@ const Detail = () => {
             <button
               className="btn btn-outline-dark"
               onClick={() => handleQuantityChange(1)}
+              style={{ borderRadius: "0" }}
             >
               +
             </button>
           </div>
-          <p className="mt-3">{productDetail.price}$</p>
+          <p className="mt-3"></p>
           <button
             className="btn btn-outline-dark ml-2"
             onClick={handleAddToCart}
+            style={{ borderRadius: "0", padding: "10px 100px" }}
           >
-            Add to Cart <i className="fa fa-cart-plus"></i>
+            ADD TO CART{" "}
+            <i
+              class="fa fa-circle"
+              style={{ fontSize: "8px", margin: "0 10px" }}
+            ></i>{" "}
+            ${productDetail.price}
           </button>
         </div>
       </div>
-      <h3 className="mt-2">Related Products</h3>
-      <div className="row">
+      <h3 className="mt-2 text-center">YOU MIGHT ALSO LIKE</h3>
+      <div className="row mb-5">
         {productDetail.relatedProducts?.map((prod) => {
           return (
             <div className="col-4 mt-2 product-container" key={prod.id}>

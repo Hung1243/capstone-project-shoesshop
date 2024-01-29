@@ -36,13 +36,13 @@ const Footer = () => {
               class="col-6 footer__item text-start"
               style={{ fontSize: "16px", width: "390px" }}
             >
-              <h3>OUR PROMISE</h3>
+              <h3>ABOUT US</h3>
               <p>
-                The last shoes you will ever need. Highly adjustable, with soft
-                insoles, carefully crafted for your distinguished taste.
-                Purchase our shoes and unleash an experience that is as smooth
-                on your stride as it is on your feet. Let yourself shine in a
-                new light.
+                We champion continual progress for athletes and sport by taking
+                action to help athletes reach their potential. Every job at
+                SNKRS, Inc. is grounded in a team-first mindset, cultivating a
+                culture of innovation and a shared purpose to leave an enduring
+                impact.
               </p>
             </div>
           </div>
