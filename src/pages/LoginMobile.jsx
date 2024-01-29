@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { loginApiAction } from "../redux/Reducers/UserReducer";
@@ -7,10 +7,9 @@ import { updateOnOkayAction } from "../redux/Reducers/DrawerReducer";
 import { Button, Checkbox, Form, Input } from "antd";
 import LoginFacebook from "../components/LoginFacebook";
 
-const Login = () => {
+const LoginMobile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [containerClass, setContainerClass] = useState("");
 
   const frmLogin = useFormik({
     initialValues: {
@@ -30,32 +29,27 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="pt-5">
+    <div className="" style={{ marginTop: "90px" }}>
       <Form
         onFinish={frmLogin.handleSubmit}
         className="container"
-        // labelCol={{
-        //   span: 8,
-        // }}
-        // wrapperCol={{
-        //   span: 16,
-        // }}
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
         style={{
           maxWidth: 700,
+          background: "#ececec",
           padding: "10px 50px 50px 50px",
         }}
       >
-        <h3
-          style={{
-            fontWeight: "bold",
-            fontFamily: "Libre Bodoni, serif",
-            textAlign: "center",
-            fontSize: "18px",
-          }}
-        >
-          LOGIN
+        <h3 style={{ fontWeight: "bold", fontFamily: "Libre Bodoni, serif" }}>
+          Login
         </h3>
         <Form.Item
+          label="Email"
           name="email"
           rules={[
             {
@@ -64,13 +58,10 @@ const Login = () => {
             },
           ]}
         >
-          <Input
-            onChange={frmLogin.handleChange}
-            placeholder="Email"
-            style={{ borderRadius: "0" }}
-          />
+          <Input onChange={frmLogin.handleChange} />
         </Form.Item>
         <Form.Item
+          label="Password"
           name="password"
           rules={[
             {
@@ -79,39 +70,28 @@ const Login = () => {
             },
           ]}
         >
-          <Input.Password
-            onChange={frmLogin.handleChange}
-            placeholder="Password"
-            style={{ borderRadius: "0" }}
-          />
+          <Input.Password onChange={frmLogin.handleChange} />
         </Form.Item>
         <Form.Item
-        // wrapperCol={{
-        //   offset: 8,
-        //   span: 16,
-        // }}
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
         >
-          <button
+          <Button
             type="primary"
             htmlType="submit"
-            className="btn btn-outline-dark"
-            style={{
-              borderRadius: "0",
-              fontSize: "12px",
-              width: "100%",
-              fontWeight: "bolder",
-              padding: "6px 0",
-            }}
+            className="btn btn-dark mx-2"
+            style={{ fontSize: "12px" }}
           >
             SIGN IN
-          </button>
+          </Button>
         </Form.Item>
-        <div className="text-center bg-black lg-facebook">
-          <LoginFacebook />
-        </div>
+
+        <LoginFacebook />
       </Form>
     </div>
   );
 };
 
-export default Login;
+export default LoginMobile;

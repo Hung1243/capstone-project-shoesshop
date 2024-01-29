@@ -48,14 +48,12 @@ html {
 
 button.kep-login-facebook.metro {
   border-radius: 11px;
-  background: linear-gradient(
-    90deg,
-    rgb(75 72 130) 0%,
-    rgba(9, 9, 121, 1) 24%,
-    rgb(60 175 199) 100%,
-    rgba(9, 9, 121, 1) 100%
-  );
+  background: black;
   border: none;
+  padding: 6px 0;
+  width: 100%;
+  font-family: 'Karla', sans-serif;
+
 }
 
 .product-card .card {
@@ -66,9 +64,13 @@ button.kep-login-facebook.metro {
  border-radius: 10px;
 }
 
+.product-image img {
+  background-color:#f6f6f6;
+}
+
 /* Ticker  */
 
-.ticker-title, .featured-title{
+.ticker-title, .featured-title, .related-title{
   font-family: 'Karla', sans-serif;
   font-weight: 800;
   color: #00000099;

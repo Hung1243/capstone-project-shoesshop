@@ -1,4 +1,5 @@
 import "././index.css";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import './index.css';
@@ -22,6 +23,8 @@ import Search from "./pages/Search";
 import Profile from "./pages/Profile";
 import Cart from "./pages/Cart";
 import HomeTemplate from "./template/HomeTemplate";
+import DetailMobile from "./pages/DetailMobile.jsx";
+import LoginMobile from "./pages/LoginMobile.jsx";
 
 //history giúp chuyển hướng trang
 export const history = createBrowserHistory();
@@ -41,13 +44,23 @@ root.render(
               />
             }
           ></Route>
-          <Route path="login" element={<Login />}></Route>
+          <Route path="login" element={
+              <DeviceTemplate
+                Component={<Login />}
+                MobileComponent={<LoginMobile />}
+              />
+            }></Route>
           <Route path="register" element={<Register />}></Route>
           <Route path="profile" element={<Profile />}></Route>
           <Route path="cart" element={<Cart />}></Route>
 
           <Route path="detail">
-            <Route path=":id" element={<Detail />}></Route>
+            <Route path=":id" element={
+              <DeviceTemplate
+                Component={<Detail />}
+                MobileComponent={<DetailMobile />}
+              />
+            }></Route>
           </Route>
           <Route path="search" element={<Search />}></Route>
         </Route>

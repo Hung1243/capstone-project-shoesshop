@@ -53,7 +53,7 @@ const HomeMobile = () => {
                 <div className="info-container col-5 d-flex align-items-center justify-content-center">
                   <div className="">
                     <h1 className="mb-0">{product.name}</h1>
-                    <p className="mb-0 text-dark">{product.description}</p>
+                    <p className="mb-0 text-dark">{product.shortDescription}</p>
                     <NavLink
                       className="btn btn-primary"
                       to={`/detail/${product.id}`}
