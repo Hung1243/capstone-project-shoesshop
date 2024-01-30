@@ -39,7 +39,7 @@ const Header = () => {
     setVisible(false);
   }, [userLogin]);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow">
       <div className="container-fluid">
         <NavLink className="navbar-brand fs-3 text-white" to="/">
           SNKRS

@@ -51,7 +51,8 @@ html {
 
 button.kep-login-facebook.metro {
   border-radius: 11px;
-  background: black;
+  background: transparent;
+  color: black;
   border: none;
   padding: 6px 0;
   width: 100%;
@@ -110,6 +111,38 @@ button.kep-login-facebook.metro {
   font-weight: 800;
   font-family: sans-serif;
 }
+
+/* Login */
+.lg-facebook {
+border: 1px solid black;
+}
+
+.account-btn a{
+  text-decoration: none;
+  color: black;
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+
+}
+.account-btn a:hover::after{
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.account-btn a::after {
+  content: '';
+  position: absolute;
+  width: 137px;
+  transform: scaleX(0);
+  border-radius: 5px;
+  height: 3px;
+  bottom: 43%;
+  left: 45.5%;
+  background: black;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
 
 
 /* Footer  */
@@ -177,6 +210,13 @@ button.kep-login-facebook.metro {
 .accordion-button:focus {
   border: none;
   box-shadow: none;
+}
+
+/* Register */
+.register-form input {
+    margin: 28px 0;
+    border-radius: 0px!important;
+
 }
 
 /* Transition */

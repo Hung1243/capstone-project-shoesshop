@@ -7,7 +7,12 @@ const Footer = () => {
       <div className="row">
         <div class="footer__top col-8 mt-3">
           <div className=" text-start mb-5">
-            <img src="./Liceria (2).png" alt="..." width={200} />
+            <img
+              src="./Liceria (2).png"
+              alt="..."
+              width={200}
+              style={{ mixBlendMode: "hard-light" }}
+            />
           </div>
           <div className="row">
             <div class="col-6 footer__item text-start">
