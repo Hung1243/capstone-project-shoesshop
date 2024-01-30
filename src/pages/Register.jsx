@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateOnOkayAction } from "../redux/Reducers/DrawerReducer";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { NavLink, useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -43,16 +43,16 @@ const Register = () => {
   return (
     <div style={{ background: "#202020", padding: "70px 0" }}>
       <form
-        className="container register-form"
+        className="container register-form text-white"
         onSubmit={frmRegis.handleSubmit}
         style={{
-          maxWidth: "680px",
+          maxWidth: "780px",
           background: "#151515",
           color: "white",
-          padding: "36px 41px",
+          padding: "36px 61px",
         }}
       >
-        <h3>Register</h3>
+        <h3 className="text-center register-title">CREATE ACCOUNT</h3>
         <div className="form-group">
           <input
             placeholder="Email"
@@ -89,45 +89,35 @@ const Register = () => {
             onChange={frmRegis.handleChange}
           />
         </div>
-        <div>
-          <div className="form-check">
-            <p>Gender</p>
-            <input
-              value={true}
-              className="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-            />
-            <label className="form-check-label" htmlFor="flexRadioDefault1">
-              Male
-            </label>
-          </div>
-          <div className="form-check">
-            <input
-              value={false}
-              className="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault2"
-              defaultChecked
-            />
-            <label className="form-check-label" htmlFor="flexRadioDefault2">
-              Female
-            </label>
-          </div>
-        </div>
-
-        {/* <div className="form-group">
-        <select className="form-control" id="gender" name="gender">
-          <option value={true}>Male</option>
-          <option value={false}>Female</option>
-        </select>
-      </div> */}
 
         <div className="form-group">
-          <button type="submit" className="btn btn-success mt-2">
-            Register
+          <select
+            className="form-control bg-transparent text-white-50"
+            id="gender"
+            name="gender"
+            style={{ borderRadius: 0 }}
+          >
+            <option value="" disabled selected>
+              Gender
+            </option>
+            <option value={true}>Male</option>
+            <option value={false}>Female</option>
+          </select>
+        </div>
+
+        <div className="form-group my-3">
+          <button
+            type="submit"
+            className="btn btn-dark mt-2"
+            style={{
+              width: "100%",
+              borderRadius: "0",
+              fontFamily: "Karla",
+              fontSize: "13px",
+              fontWeight: "600",
+            }}
+          >
+            REGISTER
           </button>
         </div>
       </form>

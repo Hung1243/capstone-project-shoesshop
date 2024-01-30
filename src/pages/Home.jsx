@@ -3,6 +3,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { Pagination } from "antd";
 import TickerAnimation from "../components/TickerAnimation";
+import SnkrsTicker from "../components/SnkrsTicker";
 
 const itemsPerPage = 6;
 
@@ -91,7 +92,10 @@ const Home = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+
       <TickerAnimation />
+      {/* <SnkrsTicker /> */}
+
       <div className="row product-card">
         <p className="featured-title text-center">FEATURED COLLECTIONS</p>
         {displayedProducts.map((prod) => {
@@ -122,6 +126,7 @@ const Home = () => {
           );
         })}
       </div>
+
       <Pagination
         defaultCurrent={1}
         total={arrProduct.length}
@@ -129,6 +134,8 @@ const Home = () => {
         onChange={onChangePage}
         style={{ textAlign: "center" }}
       />
+
+      {/* <TickerAnimation /> */}
     </div>
   );
 };

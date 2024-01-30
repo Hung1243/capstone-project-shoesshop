@@ -39,7 +39,10 @@ const Header = () => {
     setVisible(false);
   }, [userLogin]);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark bg-black"
+      style={{ boxShadow: "0px 2px 20px 16px black" }}
+    >
       <div className="container-fluid">
         <NavLink className="navbar-brand fs-3 text-white" to="/">
           SNKRS
@@ -97,7 +100,7 @@ const Header = () => {
               <NavLink className="nav-link" to="/cart">
                 <Badge count={cartItemCount} showZero>
                   <ShoppingCartOutlined
-                    style={{ fontSize: "40px", color: "white" }}
+                    style={{ fontSize: "26px", color: "white" }}
                   />
                 </Badge>
               </NavLink>
