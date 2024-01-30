@@ -3,13 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { number } from "yup";
-
-import {
-  addToCart,
-  updateCartItem,
-  removeCartItem,
-  clearCart,
-} from "../redux/Reducers/cartReducer";
+import { addToCart } from "../redux/Reducers/cartReducer";
 
 const Detail = () => {
   const [productDetail, setProductDetail] = useState({});

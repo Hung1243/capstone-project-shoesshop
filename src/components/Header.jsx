@@ -40,7 +40,7 @@ const Header = () => {
   }, [userLogin]);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-      <div className="container-fluid">
+      <div className="container">
         <NavLink className="navbar-brand fs-3 text-white" to="/">
           SNKRS
         </NavLink>
