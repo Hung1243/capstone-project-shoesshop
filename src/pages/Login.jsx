@@ -10,7 +10,6 @@ import LoginFacebook from "../components/LoginFacebook";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [containerClass, setContainerClass] = useState("");
 
   const frmLogin = useFormik({
     initialValues: {
