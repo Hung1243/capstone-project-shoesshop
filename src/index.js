@@ -44,12 +44,7 @@ root.render(
               />
             }
           ></Route>
-          <Route path="login" element={
-              <DeviceTemplate
-                Component={<Login />}
-                MobileComponent={<LoginMobile />}
-              />
-            }></Route>
+          <Route path="login" element={<Login/>}></Route>
           <Route path="register" element={<Register />}></Route>
           <Route path="profile" element={<Profile />}></Route>
           <Route path="cart" element={<Cart />}></Route>

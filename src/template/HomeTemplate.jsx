@@ -9,7 +9,7 @@ const HomeTemplate = () => {
   return (
     <div>
       <Header />
-      <div className="content" style={{ minHeight: "80vh" }}>
+      <div className="content" style={{ minHeight: "70vh" }}>
         <Outlet />
       </div>
 

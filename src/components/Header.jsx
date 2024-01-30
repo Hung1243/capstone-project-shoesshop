@@ -80,11 +80,11 @@ const Header = () => {
               ) : (
                 <div className="d-flex">
                   <NavLink className="nav-link" to="/login">
-                    Login
+                    Account
                   </NavLink>
-                  <NavLink className="nav-link" to="/register">
+                  {/* <NavLink className="nav-link" to="/register">
                     Register
-                  </NavLink>
+                  </NavLink> */}
                 </div>
               )}
             </li>

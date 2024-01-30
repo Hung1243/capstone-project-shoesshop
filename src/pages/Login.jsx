@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { loginApiAction } from "../redux/Reducers/UserReducer";
 import { useDispatch } from "react-redux";
 import { updateOnOkayAction } from "../redux/Reducers/DrawerReducer";
@@ -48,7 +48,7 @@ const Login = () => {
         <h3
           style={{
             fontWeight: "bold",
-            fontFamily: "Libre Bodoni, serif",
+            fontFamily: "Karla",
             textAlign: "center",
             fontSize: "18px",
           }}
@@ -97,10 +97,11 @@ const Login = () => {
             className="btn btn-outline-dark"
             style={{
               borderRadius: "0",
-              fontSize: "12px",
+              fontSize: "13px",
               width: "100%",
               fontWeight: "bolder",
               padding: "6px 0",
+              fontFamily: "Karla",
             }}
           >
             SIGN IN
@@ -109,6 +110,7 @@ const Login = () => {
         <div className="text-center bg-black lg-facebook">
           <LoginFacebook />
         </div>
+        <NavLink to="/register">CREATE ACCOUNT</NavLink>
       </Form>
     </div>
   );

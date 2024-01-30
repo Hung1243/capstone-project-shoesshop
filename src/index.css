@@ -45,6 +45,9 @@ html {
   font-family: 'Libre Bodoni', serif;
 
 } */
+:where(.css-dev-only-do-not-override-dkbvqv).ant-pagination .ant-pagination-item-active {
+  border-color: #80808080;
+}
 
 button.kep-login-facebook.metro {
   border-radius: 11px;
@@ -53,6 +56,7 @@ button.kep-login-facebook.metro {
   padding: 6px 0;
   width: 100%;
   font-family: 'Karla', sans-serif;
+  font-size: 13PX;
 
 }
 

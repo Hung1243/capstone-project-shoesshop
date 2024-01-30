@@ -8,7 +8,7 @@ const BottomTab = () => {
       <img
         src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2024%2F01%2FFirst-Look-at-the-Air-Jordan-5-SE-Sail-2.jpg?cbr=1&q=90"
         alt="snkrs"
-        style={{ width: "100%" }}
+        style={{ width: "100%", height: "200px" }}
       />
       <div
         className="text-start py-5 container"
