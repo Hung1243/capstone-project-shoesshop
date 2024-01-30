@@ -121,12 +121,7 @@ const Detail = () => {
             onClick={handleAddToCart}
             style={{ borderRadius: "0", padding: "10px 100px" }}
           >
-            ADD TO CART{" "}
-            <i
-              class="fa fa-circle"
-              style={{ fontSize: "8px", margin: "0 10px" }}
-            ></i>{" "}
-            ${productDetail.price}
+            ADD TO CART <span className="mx-2">•</span> ${productDetail.price}
           </button>
         </div>
       </div>

@@ -36,7 +36,7 @@ const OrderHistory = () => {
           <p>{`+ Orders have been placed on ${new Date(
             order.date
           ).toLocaleDateString()}`}</p>
-          <table className="table table-bordered">
+          <table className="table table-bordered table-wrapper">
             <thead>
               <tr>
                 <th>ID</th>

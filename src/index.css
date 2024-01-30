@@ -52,7 +52,8 @@ html {
 
 button.kep-login-facebook.metro {
   border-radius: 11px;
-  background: black;
+  background: transparent;
+  color: black;
   border: none;
   padding: 6px 0;
   width: 100%;
@@ -111,6 +112,38 @@ button.kep-login-facebook.metro {
   font-weight: 800;
   font-family: sans-serif;
 }
+
+/* Login */
+.lg-facebook {
+border: 1px solid black;
+}
+
+.account-btn a{
+  text-decoration: none;
+  color: black;
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+
+}
+.account-btn a:hover::after{
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.account-btn a::after {
+  content: '';
+  position: absolute;
+  width: 137px;
+  transform: scaleX(0);
+  border-radius: 5px;
+  height: 3px;
+  bottom: 43%;
+  left: 45.5%;
+  background: black;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
 
 /* Footer  */
 
@@ -178,6 +211,52 @@ li a {
   box-shadow: none;
 }
 
+/* Register */
+.register-form input {
+    margin: 28px 0;
+    border-radius: 0px!important;
+    background: transparent;
+    color:white;
+    border: 1px solid grey;
+}
+input::placeholder {
+  color: grey!important;
+  font-size: 14px;
+}
+.register-title {
+font-family: 'Karla', sans-serif;
+ font-weight: 700;
+}
+
+select#gender {
+  border: 1px solid grey;
+  font-size: 13px;
+}
+
+.form-control:focus {
+  color: grey;
+  background-color: transparent;
+  border-color: white;
+  outline: 0;
+  box-shadow: 1px 1px 7px 1px white;
+}
+
+/* Profile */
+
+@media only screen and (max-width: 768px) {
+.profile-img {
+  width: 99px!important;
+}
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+}
+
 /* Transition */
 @keyframes marquee {
   0% {
@@ -197,21 +276,4 @@ li a {
   100% {
     left: 100%;
   }
-}
-
-/*carousel*/
-#carouselExample .carousel-control-prev,
-#carouselExample .carousel-control-next {
-  color: black; /* Màu nền của nút */
-  border: none; /* Loại bỏ đường viền */
-}
-
-#carouselExample .carousel-control-prev-icon,
-#carouselExample .carousel-control-next-icon {
-  filter: invert(100%); /* Đảo ngược màu sắc của biểu tượng */
-}
-
-#carouselExample .carousel-control-prev:hover,
-#carouselExample .carousel-control-next:hover {
-  color: #333; /* Màu nền khi di chuột qua */
 }

@@ -94,7 +94,7 @@ const Login = () => {
           <button
             type="primary"
             htmlType="submit"
-            className="btn btn-outline-dark"
+            className="btn btn-dark"
             style={{
               borderRadius: "0",
               fontSize: "13px",
@@ -107,10 +107,12 @@ const Login = () => {
             SIGN IN
           </button>
         </Form.Item>
-        <div className="text-center bg-black lg-facebook">
+        <div className="text-center lg-facebook">
           <LoginFacebook />
         </div>
-        <NavLink to="/register">CREATE ACCOUNT</NavLink>
+        <div className="text-center mt-4 account-btn">
+          <NavLink to="/register">CREATE ACCOUNT ?</NavLink>
+        </div>
       </Form>
     </div>
   );
