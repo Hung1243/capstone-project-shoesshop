@@ -45,7 +45,8 @@ html {
   font-family: 'Libre Bodoni', serif;
 
 } */
-:where(.css-dev-only-do-not-override-dkbvqv).ant-pagination .ant-pagination-item-active {
+:where(.css-dev-only-do-not-override-dkbvqv).ant-pagination
+  .ant-pagination-item-active {
   border-color: #80808080;
 }
 
@@ -56,31 +57,31 @@ button.kep-login-facebook.metro {
   border: none;
   padding: 6px 0;
   width: 100%;
-  font-family: 'Karla', sans-serif;
-  font-size: 13PX;
-
+  font-family: "Karla", sans-serif;
+  font-size: 13px;
 }
 
 .product-card .card {
-  border:none
+  border: none;
 }
 .product-card .card img {
- background-color:#f6f6f6;
- border-radius: 10px;
+  background-color: #f6f6f6;
+  border-radius: 10px;
 }
 
 .product-image img {
-  background-color:#f6f6f6;
+  background-color: #f6f6f6;
 }
 
 /* Ticker  */
 
-.ticker-title, .featured-title, .related-title{
-  font-family: 'Karla', sans-serif;
+.ticker-title,
+.featured-title,
+.related-title {
+  font-family: "Karla", sans-serif;
   font-weight: 800;
   color: #00000099;
   text-align: center;
-
 }
 
 .ticker-wrap {
@@ -95,19 +96,19 @@ button.kep-login-facebook.metro {
   margin-top: 5px;
   animation: marquee 20s linear infinite;
 }
-.item-collection-1,.item-collection-2{
+.item-collection-1,
+.item-collection-2 {
   position: relative;
   left: 0%;
   animation: swap 20s linear infinite;
   animation-iteration-count: infinite;
-
 }
 
 .ticker__item {
   display: inline-block;
   padding: 0 1rem;
   font-size: 2rem;
-  color: black;   
+  color: black;
   font-weight: 800;
   font-family: sans-serif;
 }
@@ -147,10 +148,9 @@ border: 1px solid black;
 
 /* Footer  */
 
- li a {
-    text-decoration: none;
-    color: white;
-
+li a {
+  text-decoration: none;
+  color: white;
 }
 
 .product-container {
@@ -164,7 +164,7 @@ border: 1px solid black;
 
 .button-container {
   position: absolute;
-  bottom: -50px; 
+  bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
   transition: bottom 0.4s ease-in-out;
@@ -187,14 +187,14 @@ border: 1px solid black;
 
 /* Accordion */
 .accordion {
-  font-family: 'Karla', sans-serif;
+  font-family: "Karla", sans-serif;
 }
 
 .accordion-button {
   background-color: #040404;
   color: white;
   border-top: 1px solid #80808057;
-  border-radius: 0!important;
+  border-radius: 0 !important;
 }
 
 .accordion-item {
@@ -261,15 +261,16 @@ select#gender {
 /* Transition */
 @keyframes marquee {
   0% {
-    transform: translateX(0)
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%)
+    transform: translateX(-100%);
   }
 }
 
 @keyframes swap {
-  0%, 50% {
+  0%,
+  50% {
     left: 0%;
   }
   50.01%,
@@ -278,6 +279,19 @@ select#gender {
   }
 }
 
+/*carousel*/
+#carouselExample .carousel-control-prev,
+#carouselExample .carousel-control-next {
+  color: black; /* Màu nền của nút */
+  border: none; /* Loại bỏ đường viền */
+}
 
+#carouselExample .carousel-control-prev-icon,
+#carouselExample .carousel-control-next-icon {
+  filter: invert(100%); /* Đảo ngược màu sắc của biểu tượng */
+}
 
-
+#carouselExample .carousel-control-prev:hover,
+#carouselExample .carousel-control-next:hover {
+  color: #333; /* Màu nền khi di chuột qua */
+}

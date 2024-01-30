@@ -67,7 +67,7 @@ const Profile = () => {
           <h5>Password: {userProfile.password}</h5>
           <h5>Phone: {userProfile.phone}</h5>
 
-          <Button type="primary" onClick={showModal}>
+          <Button type="primary" onClick={showModal} className="btn btn-dark">
             Update
           </Button>
         </div>

@@ -64,7 +64,6 @@ const Search = () => {
               onChange={formSearch.handleChange}
               value={formSearch.keyword}
             />
-            <label htmlFor="keyword">search</label>
           </div>
           <button className="input-group-button btn btn-dark">Search</button>
         </div>

@@ -35,28 +35,35 @@ const Home = () => {
   const displayedProducts = arrProduct.slice(startIndex, endIndex);
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       <div id="carouselExample" className="carousel slide">
-        <div className="carousel-inner">
+        <div className="carousel-inner  animate__lightSpeedInRight">
           {arrProduct.map((product, index) => (
             <div
               key={product.id}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
+              className={`carousel-item  ${index === 0 ? "active" : ""}`}
             >
               <div className="row">
-                <div className="image-container col-7">
+                <div className="image-container align-content-center   col-7 animate__animated animate__jackInTheBox">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="img-fluid"
                   />
                 </div>
-                <div className="info-container col-5 d-flex align-items-center justify-content-center">
+                <div className="info-container animate__animated animate__jackInTheBox col-5 d-flex align-items-center justify-content-center">
                   <div className="">
-                    <h1 className="mb-0">{product.name}</h1>
-                    <p className="mb-0 text-dark">{product.description}</p>
+                    <h1 className="mb-0 text-uppercase">{product.name}</h1>
+                    <br />
+                    <br />
+                    <p className="mb-0 text-dark fw-light">
+                      {product.description}
+                    </p>
                     <NavLink
-                      className="btn btn-primary"
+                      className="btn btn-light mt-2 fs-5"
+                      style={{
+                        "background-color": "#FF8C00",
+                      }}
                       to={`/detail/${product.id}`}
                     >
                       Buy now
