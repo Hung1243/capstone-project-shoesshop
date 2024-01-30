@@ -51,9 +51,10 @@ const Profile = () => {
 
   return (
     <div className="container">
-      <div className="row mt-5 m-5">
+      <div className="row mt-5 m-5 profile-wrapper">
         <div className="col-4">
           <img
+            className="profile-img"
             src={userProfile.avatar}
             alt="..."
             width={200}
